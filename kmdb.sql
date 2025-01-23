@@ -187,7 +187,24 @@ INSERT INTO character(
     name,
     actor_id,
     movie_id
-) VALUE ()
+) VALUES (
+    "Bruce Wayne", 1, 1),
+    ("Alfred", 2, 1),
+    ("Ra's Al Ghul", 3, 1),
+    ("Rachel Dawes", 4, 1),
+    ("Commissioner", 5, 1),
+    ("Bruce Wayne", 1, 2),
+    ("Joker", 6, 2),
+    ("Harvey Dent", 7, 2),
+    ("Alfred", 2, 2),
+    ("Rachel Dawes", 8, 2),
+    ("Bruce Wayne", 1, 3),
+    ("Commissioner", 5, 3),
+    ("Bane", 9, 3),
+    ("John Blake", 10, 3),
+    ("Selina Kyle", 11, 3)
+    ;
+
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -195,7 +212,17 @@ INSERT INTO character(
 .print ""
 
 -- The SQL statement for the movies output
--- TODO!
+SELECT
+    movie.title,
+    movie.year,
+    movie.MPAA,
+    studio.name AS studio_name
+FROM
+    movie
+INNER JOIN
+    studio
+ON
+    movie.studio_id = studio.id;
 
 -- Prints a header for the cast output
 .print ""
@@ -205,4 +232,14 @@ INSERT INTO character(
 
 
 -- The SQL statement for the cast output
--- TODO!
+SELECT
+    movie.title,
+    movie.year,
+    movie.MPAA,
+    studio.name AS studio_name
+FROM
+    movie
+INNER JOIN
+    studio
+ON
+    movie.studio_id = studio.id;
