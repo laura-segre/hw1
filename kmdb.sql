@@ -234,12 +234,16 @@ ON
 -- The SQL statement for the cast output
 SELECT
     movie.title,
-    movie.year,
-    movie.MPAA,
-    studio.name AS studio_name
+    actor.name,
+    character.name
 FROM
-    movie
+    character
 INNER JOIN
-    studio
+    actor
 ON
-    movie.studio_id = studio.id;
+    character.actor_id = actor.id
+INNER JOIN
+    movie
+ON
+character.movie_id = movie.id
+;
