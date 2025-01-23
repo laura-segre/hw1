@@ -111,10 +111,42 @@
 .headers off
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
--- TODO!
+-- 
+    DROP TABLE if exists movies,
+    DROP TABLE if exists studio,
+    DROP TABLE if exists actor,
+    DROP TABLE if exists character;
 
 -- Create new tables, according to your domain model
--- TODO!
+-- 
+  CREATE TABLE studio (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT
+  );
+CREATE TABLE actor (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT
+  );
+
+CREATE TABLE movie (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    year TEXT,
+    MPAA TEXT,
+    studio_ID Text,
+    FOREIGN KEY (studio_id) REFERENCES studio(id)
+  );
+
+CREATE TABLE character (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    actor_id TEXT,
+    movie_id TEXT,
+    FOREIGN KEY (actor_id) REFERENCES actor(id)
+    FOREIGN KEY (movie_id) REFERENCES movie(id)
+  );
+
+
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
