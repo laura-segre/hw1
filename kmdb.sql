@@ -112,9 +112,9 @@
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- 
-    DROP TABLE if exists movies,
-    DROP TABLE if exists studio,
-    DROP TABLE if exists actor,
+    DROP TABLE if exists movie;
+    DROP TABLE if exists studio;
+    DROP TABLE if exists actor;
     DROP TABLE if exists character;
 
 -- Create new tables, according to your domain model
@@ -164,7 +164,6 @@ CREATE TABLE character (
     ("Liam Neeson"),
     ("Katie Holmes"),
     ("Gary Oldman"),
-    ("Christian Bale"),
     ("Heath Ledger"),
     ("Aaron Eckhart"),
     ("Maggie Gyllenhaal"),
@@ -172,6 +171,23 @@ CREATE TABLE character (
     ("Joseph Gordon-Levitt"),
     ("Anne Hathaway")
  ;
+
+INSERT INTO movie(
+    title,
+    year,
+    MPAA,
+    studio_id
+ ) VALUES (
+    "Batman Begins", "2005", "PG-13", 1),
+    ("The Dark Knight", "2008", "PG-13",1),
+    ("The Dark Knight Rises", "2012", "PG-13", 1)
+    ;
+
+INSERT INTO character(
+    name,
+    actor_id,
+    movie_id
+) VALUE ()
 
 -- Prints a header for the movies output
 .print "Movies"
